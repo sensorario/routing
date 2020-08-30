@@ -6,12 +6,12 @@ class Router
 
     private $dynamics = [];
 
-    public function addRouteClass(string $class)
+    public function addRouteClass(string $class): void
     {
         $this->dynamics[] = $class;
     }
 
-    public function addStaticRoute(string $route)
+    public function addStaticRoute(string $route): void
     {
         $this->statics[] = $route;
     }
@@ -37,7 +37,7 @@ class Router
         return RouterResponse::notFound();
     }
 
-    public function numberOfRoutes()
+    public function numberOfRoutes(): int
     {
         return count($this->statics)
             + count($this->dynamics);

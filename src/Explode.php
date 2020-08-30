@@ -2,7 +2,7 @@
 
 class Explode
 {
-    public static function fromPath(string $path)
+    public static function fromPath(string $path): array
     {
         $explosion = explode('/', $path);
         unset($explosion[0]);

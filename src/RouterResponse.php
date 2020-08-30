@@ -16,7 +16,7 @@ class RouterResponse
         $this->name = $name;
     }
 
-    public static function notFound()
+    public static function notFound(): self
     {
         return new self([], 'unknown');
     }
@@ -24,24 +24,24 @@ class RouterResponse
     public static function found(
         array $url,
         string $name
-    ) {
+    ): self {
         return new self(
             $url,
             $name
         );
     }
 
-    public function routeFound()
+    public function routeFound(): bool
     {
         return count($this->resource) != 0;
     }
 
-    public function get(string $name)
+    public function get(string $name): string
     {
         return $this->resource[$name];
     }
 
-    public function routeName()
+    public function routeName(): string
     {
         return $this->name;
     }
