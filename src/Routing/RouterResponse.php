@@ -1,5 +1,7 @@
 <?php
 
+namespace Routing;
+
 class RouterResponse
 {
     /** @var array<string> $resource */
