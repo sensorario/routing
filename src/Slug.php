@@ -2,6 +2,7 @@
 
 class Slug
 {
+    /** @param array<string> $combine */
     public static function from(array $combine): string
     {
         $keys = array_keys($combine);

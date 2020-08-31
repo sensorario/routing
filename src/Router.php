@@ -2,9 +2,11 @@
 
 class Router
 {
-    private $statics = [];
+    /** @var array<string> $statics */
+    private array $statics = [];
 
-    private $dynamics = [];
+    /** @var array<string> $dynamics */
+    private array $dynamics = [];
 
     public function addRouteClass(string $class): void
     {

@@ -2,12 +2,14 @@
 
 class RouterResponse
 {
+    /** @var array<string> $resource */
     private array $resource;
 
     private bool $found = true;
 
     private string $name;
 
+    /** @param array<string> $resource */
     private function __construct(
         array $resource,
         string $name
@@ -21,6 +23,7 @@ class RouterResponse
         return new self([], 'unknown');
     }
 
+    /** @param array<string> $url */
     public static function found(
         array $url,
         string $name
