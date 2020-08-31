@@ -1,6 +1,8 @@
 <?php
 
-class RouterTest extends PHPUnit\Framework\TestCase
+namespace Routing;
+
+class RouterTest extends \PHPUnit\Framework\TestCase
 {
     /** @test */
     public function shouldTranslateRouteInRouterResponeObject()

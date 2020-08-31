@@ -1,5 +1,7 @@
 <?php
 
+namespace Routing;
+
 class Slug
 {
     /** @param array<string> $combine */

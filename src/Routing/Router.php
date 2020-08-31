@@ -1,5 +1,7 @@
 <?php
 
+namespace Routing;
+
 class Router
 {
     /** @var array<string> $statics */

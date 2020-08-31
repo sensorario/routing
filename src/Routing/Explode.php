@@ -1,5 +1,7 @@
 <?php
 
+namespace Routing;
+
 class Explode
 {
     /** @return array<string> */
