@@ -10,7 +10,7 @@ class RouterTest extends \PHPUnit\Framework\TestCase
         $routeClass = '/:resource';
 
         $router = new Router();
-        $router->addRouteClass($routeClass);
+        $router->addRouteClass($routeClass, 'foo');
 
         $route = '/onlyResource';
         $response = $router->match($route);
@@ -25,7 +25,7 @@ class RouterTest extends \PHPUnit\Framework\TestCase
         $routeClass = '/:resource';
 
         $router = new Router();
-        $router->addRouteClass($routeClass);
+        $router->addRouteClass($routeClass, 'foo');
 
         $route = '/onlyResource/42';
         $response = $router->match($route);
@@ -39,7 +39,7 @@ class RouterTest extends \PHPUnit\Framework\TestCase
         $routeClass = '/:resource/:id/:foo';
 
         $router = new Router();
-        $router->addRouteClass($routeClass);
+        $router->addRouteClass($routeClass, 'foo');
 
         $route = '/person/42/something';
         $response = $router->match($route);
@@ -47,15 +47,16 @@ class RouterTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals('something', $response->get(':foo'));
         $this->assertEquals('42', $response->get(':id'));
         $this->assertEquals('resource-id-foo', $response->routeName());
+        $this->assertEquals($routeClass, $response->routeClass());
     }
 
     /** @test */
     public function shouldCollectAllRoutes()
     {
         $router = new Router();
-        $router->addRouteClass('/:resource');
-        $router->addRouteClass('/:resource/:id');
-        $router->addStaticRoute('/ciao/mondo');
+        $router->addRouteClass('/:resource', 'foo');
+        $router->addRouteClass('/:resource/:id', 'foo');
+        $router->addStaticRoute('/ciao/mondo', 'foo');
         $this->assertEquals(3, $router->numberOfRoutes());
     }
 
@@ -63,8 +64,8 @@ class RouterTest extends \PHPUnit\Framework\TestCase
     public function shouldCheckEachRouteInRouter()
     {
         $router = new Router();
-        $router->addRouteClass('/:resource');
-        $router->addRouteClass('/:resource/:id');
+        $router->addRouteClass('/:resource', 'foo');
+        $router->addRouteClass('/:resource/:id', 'foo');
 
         $route = '/onlyResource/42';
         $response = $router->match($route);
@@ -76,8 +77,8 @@ class RouterTest extends \PHPUnit\Framework\TestCase
     public function shouldAssignNameToEachRoute()
     {
         $router = new Router();
-        $router->addRouteClass('/:resource');
-        $router->addRouteClass('/:resource/:id');
+        $router->addRouteClass('/:resource', 'foo');
+        $router->addRouteClass('/:resource/:id', 'foo');
 
         $route = '/onlyResource/42';
         $response = $router->match($route);
